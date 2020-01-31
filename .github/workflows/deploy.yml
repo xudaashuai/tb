@@ -12,21 +12,18 @@ jobs:
     - name: login
       uses: actions/heroku@master
       env:
-        HEROKU_APP: team-workbackend
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       with:
         args: container:login
     - name: push
       uses: actions/heroku@master
       env:
-        HEROKU_APP: team-workbackend
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       with:
-        args: container:push -a american-hangar web
+        args: container:push -a team-workbackend web
     - name: release
       uses: actions/heroku@master
       env:
-        HEROKU_APP: team-workbackend
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       with:
-        args: container:release -a american-hangar web
+        args: container:release -a team-workbackend web
