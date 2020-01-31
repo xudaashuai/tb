@@ -10,21 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: login
-      uses: actions/heroku@master
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+    - uses: azure/docker-login@v1
       with:
-        args: container:login
-    - name: push
-      uses: actions/heroku@master
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      with:
-        args: container:push -a team-workbackend web
-    - name: release
-      uses: actions/heroku@master
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      with:
-        args: container:release -a team-workbackend web
+        login-server: ccr.ccs.tencentyun.com
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    - name: build and push
+      run: |
+        docker build . -t ccr.ccs.tencentyun.com/${{ secrets.NAMESPACE }}/team_work_backend:${{ github.sha }}
+        docker push ccr.ccs.tencentyun.com/${{ secrets.NAMESPACE }}/team_work_backend:${{ github.sha }}
