@@ -19,7 +19,7 @@
     "core-js": "^3.4.4",
     "express": "^4.17.1",
     "http-proxy-middleware": "^0.20.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "mongoose": "^5.8.10",
     "serve-static": "^1.14.1",
     "vue": "^2.6.10",
