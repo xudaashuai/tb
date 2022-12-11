@@ -17,7 +17,7 @@
     "@types/lodash": "^4.14.149",
     "asana": "^0.17.3",
     "core-js": "^3.4.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "http-proxy-middleware": "^0.20.0",
     "lodash": "^4.17.15",
     "mongoose": "^5.8.10",
